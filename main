@@ -1,0 +1,89 @@
+#include <iostream>
+#include <conio.h>      //dla getch()
+#include <stdlib.h>     //dla slepp
+#include <cstdlib>      //dla komend w konsoli
+#include <windows.h>
+#include <time.h>       //dla czasu
+ 
+using namespace std;
+ 
+int month, year, daysOfMonth;
+ 
+ 
+int fDaysOfMonth() {
+    cout << "Podaj miesiac ";
+    cin >> month;
+    cout << "Podaj rok ";
+    cin >> year;
+ 
+    if(month==2) {
+        if (year%4==0 && year%100!=0 || year%400==0) daysOfMonth=29;
+        else daysOfMonth=28;
+    } else {
+        if(month%2==1 && month<=7) daysOfMonth=31;
+        else {
+            if(month%2==0 && month>=8) daysOfMonth=31;
+            else daysOfMonth=30;
+        }
+    }
+ 
+    cout << "Miesiac " << month << " Roku " << year << "\nMa [" << daysOfMonth << "] dni";
+ 
+    getch();
+ 
+    return 0;
+}
+ 
+int menu() {
+    int i, menuPick;
+    if (i==0) cout << "Dostepne opcje w programie:" << endl << endl;
+ 
+    i=i++;
+ 
+    cout << "---------------------------" << endl;
+    cout << "1. Podawanie ilosci dni miesiaca" << endl;
+    cout << "2. Wyjscie z programu" << endl << endl << endl;
+    cout << "Opcja nr: ";
+    cin >> menuPick;
+    switch(menuPick) {
+        case 1:
+            fDaysOfMonth();
+            break;
+        case 2:
+            system("pause");
+            exit(0);
+            break;
+        default:
+            cout << "Nie ma takiej opcji" << endl;
+            Sleep(1500);
+            system("cls");
+            menu();
+            break;
+    }
+}
+ 
+int main() {
+    menu();
+ 
+    fDaysOfMonth();
+ 
+    exit(0);
+ 
+    return 0;
+}
+ 
+/*
+if(month==2)
+{
+    if (year%4==0 && year%100!=0 || year%400==0) daysOfMonth=29;
+    else daysOfMonth=28;
+}else
+{
+    if(month%2==1 && month<=7) daysOfMonth=31;
+    else
+    {
+        if(month%2==0 && month>=8) daysOfMonth=31;
+        else daysOfMonth=30;
+    }
+}
+*/
